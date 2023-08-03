@@ -1,0 +1,16 @@
+[character]
+success_symbol = "[\\$](bold white)"
+error_symbol = "[\\$](bold red)"
+
+[container]
+disabled = true
+
+[git_branch]
+style = "bold"
+
+[hostname]
+ssh_only = false
+style = ""
+
+[battery]
+disabled = true

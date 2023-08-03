@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+#
+# Copyright (c) 2022-2023 Jarkko Sakkinen <jarkko.sakkinen@iki.fi>
+
+import os
+import sys
+
+IOMMU_SYSFS = '/sys/kernel/iommu_groups'
+IOMMU_GROUP_MAX = 128 # an arbitrary choice
+
+def get_iommu_devices():
+    groups = [None for group in range(IOMMU_GROUP_MAX)]
+
+    with os.scandir(IOMMU_SYSFS) as group_it:
+        for group in group_it:
+            devices = []
+
+            group_sysfs = IOMMU_SYSFS + '/' + group.name + '/devices'
+            with os.scandir(group_sysfs) as device_it:
+                for device in device_it:
+                    devices.append(device.name)
+
+            index = int(group.name)
+            if index >= IOMMU_GROUP_MAX:
+                print('Overflow')
+                sys.exit(1)
+
+            groups[index] = devices
+
+    return groups
+
+if __name__ == "__main__":
+    groups = get_iommu_devices()
+
+    for i in range(len(groups)):
+        group = groups[i]
+        if group == None:
+            break
+
+        print('IOMMU Group %d' % (i))
+
+        group.sort()
+
+        for device in group:
+            # FIXME: Replace with pure Python code:
+            os.system('lspci -nns ' + device)
