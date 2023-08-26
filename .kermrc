@@ -1,0 +1,3 @@
+set line /dev/ttyUSB0
+set speed 115200
+set carrier-watch off
