@@ -45,6 +45,8 @@ function git-tip {
   git --no-pager log --oneline -1;
 }
 
+
+
 # Ubuntu
 if [ ! -z "`which batcat`" ]; then
   alias cat='batcat -p --pager never'
@@ -56,6 +58,11 @@ fi
 
 if [ ! -z "`which exa`" ]; then
   alias ls='exa'
+fi
+
+HOMEBREW_BASH_COMPLETION=/opt/homebrew/etc/profile.d/bash_completion.sh
+if [[ -r $HOMEBREW_BASH_COMPLETION ]]; then
+  . "$HOMEBREW_BASH_COMPLETION"
 fi
 
 [ -z "$(which starship)" ] || eval "$(starship init bash)"
