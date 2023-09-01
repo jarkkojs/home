@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+USER=$1
+
+gpg --import "$USER-public.pgp"
+gpg --import "$USER-private.pgp"
+gpg --import-ownertrust "$USER-ownertrust.pgp"

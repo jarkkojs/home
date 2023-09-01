@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+gpg --refresh-keys --keyserver keys.openpgp.org
+gpg --refresh-keys --keyserver keyserver.ubuntu.com
+gpg --refresh-keys --keyserver keyring.debian.org

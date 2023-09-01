@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+USER=$1
+
+gpg --output "$USER-public.pgp" --armor --export $USER
+gpg --output "$USER-private.pgp" --armor --export-secret-key $USER
+gpg --export-ownertrust > "$USER-ownertrust.pgp"
