@@ -20,3 +20,5 @@
 	name = Jarkko Sakkinen
 [credential]
 	helper = cache --timeout=3600
+[pull]
+	rebase = true
