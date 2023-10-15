@@ -27,6 +27,7 @@ local function plugins(use)
     {'hrsh7th/cmp-nvim-lsp'},
     {'L3MON4D3/LuaSnip'},
   }
+  use 'dgagn/diagflow.nvim'
   use {
       'numToStr/Comment.nvim',
       config = function()
@@ -114,3 +115,5 @@ require('mason-lspconfig').setup_handlers({
     })
   end,
 })
+
+require('diagflow').setup()
