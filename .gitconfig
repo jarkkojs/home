@@ -10,17 +10,24 @@
 [include]
 	path = ~/.gitconfig.local
 
-[merge]
-	conflictstyle = diff3
+[user]
+	name = Jarkko Sakkinen
+	email = jarkko.sakkinen@iki.fi
+
+[credential]
+	helper = cache --timeout=3600
 
 [pager]
 	stash = false
 
-[user]
-	name = Jarkko Sakkinen
-[credential]
-	helper = cache --timeout=3600
 [pull]
 	rebase = true
+
+[merge]
+	conflictstyle = diff3
+
 [branch]
 	autosetuprebase = always
+
+[diff]
+	ignoreSubmodules = dirty
