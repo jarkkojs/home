@@ -18,6 +18,8 @@ if [ -d "$HOME/.local/opt/wine-tkg/bin" ] ; then
   PATH="$HOME/.local/opt/wine-tkg/bin:$PATH"
 fi
 
+export WINEFSYNC=1
+
 if [ -d "/opt/local/bin" ]; then
   PATH="/opt/local/bin:/opt/local/sbin:$PATH"
   MANPATH="/opt/local/share/man:$MANPATH"
