@@ -1,2 +1,2 @@
 GuiTabline 0
-GuiFont! FiraCode Nerd Font Mono:h13
+GuiFont! Hack Nerd Font Mono:h13
