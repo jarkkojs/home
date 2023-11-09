@@ -94,6 +94,33 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function(event)
     -- Create your keybindings here...
+
+    local fmt = function(cmd) return function(str) return cmd:format(str) end end
+    local buffer = vim.api.nvim_get_current_buf()
+    local lsp = fmt('<cmd>lua vim.lsp.%s<cr>')
+    local diagnostic = fmt('<cmd>lua vim.diagnostic.%s<cr>')
+
+    map('n', '<leader>K', lsp 'buf.hover()')
+    map('n', '<leader>gd', lsp 'buf.definition()')
+    map('n', '<leader>gD', lsp 'buf.declaration()')
+    map('n', '<leader>gi', lsp 'buf.implementation()')
+    map('n', '<leader>go', lsp 'buf.type_definition()')
+    map('n', '<leader>gr', lsp 'buf.references()')
+    map('n', '<leader>gs', lsp 'buf.signature_help()')
+    map('n', '<F2>', lsp 'buf.rename()')
+    map('n', '<F3>', lsp 'buf.format({async = true})')
+    map('x', '<F3>', lsp 'buf.format({async = true})')
+    map('n', '<F4>', lsp 'buf.code_action()')
+
+    if vim.lsp.buf.range_code_action then
+      map('x', '<F4>', lsp 'buf.range_code_action()')
+    else
+      map('x', '<F4>', lsp 'buf.code_action()')
+    end
+
+    map('n', '<leader>gl', diagnostic 'open_float()')
+    map('n', '<leader>[d', diagnostic 'goto_prev()')
+    map('n', '<leader>]d', diagnostic 'goto_next()')
   end
 })
 
