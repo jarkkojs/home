@@ -51,6 +51,7 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.listchars="tab:>-,trail:·"
 vim.opt.mouse = ""
+vim.opt.number = true
 vim.opt.path:append("**")
 vim.opt.ruler = true
 vim.opt.shortmess:append("c")
@@ -68,6 +69,7 @@ end
 
 map('n', "<silent>", "<C-l> :nohl<CR><C-l>")
 map('n', "<leader>cd", ":lcd %:p:h<CR>:pwd<CR>")
+map('n', "<leader>n", ":lua vim.o.number = not vim.o.number<CR>")
 
 local buf_check = vim.api.nvim_create_augroup("BufCheck", { clear = true })
 
