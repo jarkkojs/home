@@ -56,10 +56,6 @@ elif [ ! -z "`which bat`" ]; then
   alias less='bat -p'
 fi
 
-if [ ! -z "`which exa`" ]; then
-  alias ls='exa'
-fi
-
 HOMEBREW_BASH_COMPLETION=/opt/homebrew/etc/profile.d/bash_completion.sh
 if [[ -r $HOMEBREW_BASH_COMPLETION ]]; then
   . "$HOMEBREW_BASH_COMPLETION"
