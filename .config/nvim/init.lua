@@ -153,3 +153,34 @@ require('mason-lspconfig').setup_handlers({
     })
   end,
 })
+
+local function nvim_workspace(opts)
+  local runtime_path = vim.split(package.path, ';')
+  table.insert(runtime_path, 'lua/?.lua')
+  table.insert(runtime_path, 'lua/?/init.lua')
+  local config = {
+    settings = {
+      Lua = {
+        telemetry = {enable = false},
+        runtime = {
+          version = 'LuaJIT',
+          path = runtime_path,
+        },
+        diagnostics = {
+          globals = {'vim'}
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            -- Make the server aware of Neovim runtime files
+            vim.fn.expand('$VIMRUNTIME/lua'),
+            vim.fn.stdpath('config') .. '/lua'
+          }
+        }
+      }
+    }
+  }
+  return vim.tbl_deep_extend('force', config, opts or {})
+end
+
+require('lspconfig').lua_ls.setup(nvim_workspace())
