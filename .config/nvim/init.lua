@@ -1,20 +1,32 @@
 vim.cmd("filetype plugin indent on")
-vim.cmd [[packadd packer.nvim]]
+-- vim.cmd [[packadd packer.nvim]]
 
-local function plugins(use)
-  use 'wbthomason/packer.nvim'
-  use 'ap/vim-buftabline'
-  use {
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+plugins = {
+  'ap/vim-buftabline',
+  {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-  use 'mmarchini/bpftrace.vim'
-  use 'vim-scripts/git_patch_tags.vim'
-  use {
+    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
+  },
+  'mmarchini/bpftrace.vim',
+  'vim-scripts/git_patch_tags.vim',
+  {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
-  }
-  use {
+  },
+  {
     {'neovim/nvim-lspconfig'},
     {
       'williamboman/mason.nvim',
@@ -26,17 +38,17 @@ local function plugins(use)
     {'hrsh7th/nvim-cmp'},
     {'hrsh7th/cmp-nvim-lsp'},
     {'L3MON4D3/LuaSnip'},
-  }
-  use {
+  },
+  {
       'numToStr/Comment.nvim',
       config = function()
           require('Comment').setup()
       end
-  }
-  use 'Mofiqul/dracula.nvim'
-end
+  },
+  'Mofiqul/dracula.nvim',
+}
 
-require('packer').startup(plugins)
+require("lazy").setup(plugins, opts)
 
 vim.g.mapleader = ","
 vim.opt.autoindent = true
@@ -83,8 +95,6 @@ require('lualine').setup {
     theme = 'dracula-nvim'
   }
 }
-
-require('Comment').setup()
 
 vim.cmd[[colorscheme dracula-soft]]
 
