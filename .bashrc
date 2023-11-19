@@ -62,8 +62,8 @@ if [[ -r $HOMEBREW_BASH_COMPLETION ]]; then
 fi
 
 [ -z "$(which starship)" ] || eval "$(starship init bash)"
-[ -z "$(which systemctl)" ] || alias system=systemctl
-[ -z "$(which journalctl)" ] || alias journal=journalctl
+[ -z "$(which systemctl)" ] || alias s=systemctl
+[ -z "$(which journalctl)" ] || alias j=journalctl
 
 if [ -f "$HOME/.local.bashrc" ] ; then
   source "$HOME/.local.bashrc"
