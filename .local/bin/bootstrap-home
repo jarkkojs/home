@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-PACKER="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 TPM="$HOME/.tmux/plugins/tpm"
-
-if ! test -d "$PACKER"; then
-  git clone --depth 1 https://github.com/wbthomason/packer.nvim "$PACKER"
-fi
 
 if ! test -d "$TPM"; then
   git clone https://github.com/tmux-plugins/tpm "$TPM"
+else
+  echo "${TPM}: already cloned"
 fi
 
+AERC_ACCOUNTS_CONF="$HOME/.config/aerc/accounts.conf"
+AERC_ACCOUNTS_PERMISSIONS=$(stat -c %a $AERC_ACCOUNTS_CONF)
 
-
+if [[ $AERC_ACCOUNTS_PERMISSIONS -ne 600 ]]; then
+  echo "${AERC_ACCOUNTS_CONF}: changing permissions from ${AERC_ACCOUNTS_PERMISSIONS} to 600"
+  chmod 600 "$AERC_ACCOUNTS_CONF"
+fi
