@@ -32,3 +32,5 @@
 
 [diff]
 	ignoreSubmodules = dirty
+[sendemail]
+	smtpserver = /usr/bin/msmtp
