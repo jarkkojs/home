@@ -20,6 +20,7 @@
 [pager]
 	stash = false
 	grep = false
+	diff = false
 
 [pull]
 	rebase = true
