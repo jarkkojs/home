@@ -9,7 +9,12 @@ else
 fi
 
 AERC_ACCOUNTS_CONF="$HOME/.config/aerc/accounts.conf"
-AERC_ACCOUNTS_PERMISSIONS=$(stat -c %a $AERC_ACCOUNTS_CONF)
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  AERC_ACCOUNTS_PERMISSIONS=$(stat -f %0Lp $AERC_ACCOUNTS_CONF)
+else
+  AERC_ACCOUNTS_PERMISSIONS=$(stat -c %a $AERC_ACCOUNTS_CONF)
+fi
 
 if [[ $AERC_ACCOUNTS_PERMISSIONS -ne 600 ]]; then
   echo "${AERC_ACCOUNTS_CONF}: changing permissions from ${AERC_ACCOUNTS_PERMISSIONS} to 600"
