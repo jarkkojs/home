@@ -20,7 +20,6 @@
 [pager]
 	stash = false
 	grep = false
-	diff = false
 	branch = false
 
 [pull]
