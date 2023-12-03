@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-gpg --export --export-options backup --output "$1/public.gpg"
-gpg --export-ownertrust > "$1/ownertrust.gpg"
-gpg --export-secret-keys --export-options backup --output "$1/private.gpg" --pinentry-mode loopback
