@@ -16,11 +16,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Fedora
-[ -e /usr/libexec/mc/mc-wrapper.sh ] && alias mc='. /usr/libexec/mc/mc-wrapper.sh'
-# Ubuntu
-[ -e /usr/lib/mc/mc-wrapper.sh ] && alias mc='. /usr/lib/mc/mc-wrapper.sh'
-
 # $1 = remote
 # $2 = branch
 function git-fetch-reset {
@@ -45,8 +40,6 @@ function git-tip {
   git --no-pager log --oneline -1;
 }
 
-
-
 # Ubuntu
 if [ ! -z "`which batcat`" ]; then
   alias cat='batcat -p --pager never'
@@ -62,8 +55,6 @@ if [[ -r $HOMEBREW_BASH_COMPLETION ]]; then
 fi
 
 [ -z "$(which starship)" ] || eval "$(starship init bash)"
-[ -z "$(which systemctl)" ] || alias s=systemctl
-[ -z "$(which journalctl)" ] || alias j=journalctl
 
 if [ -f "$HOME/.local.bashrc" ] ; then
   source "$HOME/.local.bashrc"
