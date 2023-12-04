@@ -40,6 +40,10 @@ function git-tip {
   git --no-pager log --oneline -1;
 }
 
+function git-clone-korg {
+  git clone git@gitolite.kernel.org:pub/scm/linux/kernel/git/$1
+}
+
 # Ubuntu
 if [ ! -z "`which batcat`" ]; then
   alias cat='batcat -p --pager never'
