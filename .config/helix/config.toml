@@ -1,7 +1,8 @@
-theme = "onedark"
+theme = "dracula"
 
 [editor]
-line-number = "relative"
+bufferline = "multiple"
+line-number = "absolute"
 mouse = false
 
 [editor.cursor-shape]
