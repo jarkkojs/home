@@ -5,7 +5,7 @@
 	ui = auto
 
 [core]
-	editor = hx
+	editor = nvim
 
 [include]
 	path = ~/.gitconfig.local
