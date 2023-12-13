@@ -216,4 +216,9 @@ bar {
     }
 }
 
+bindsym Print       exec grimshot save screen
+bindsym Shift+Print exec grimshot save area
+bindsym Mod1+Print  exec grimshot save output
+bindsym Ctrl+Print  exec grimshot save window
+
 include /etc/sway/config.d/*
