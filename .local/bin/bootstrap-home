@@ -20,3 +20,6 @@ if [[ $AERC_ACCOUNTS_PERMISSIONS -ne 600 ]]; then
   echo "${AERC_ACCOUNTS_CONF}: changing permissions from ${AERC_ACCOUNTS_PERMISSIONS} to 600"
   chmod 600 "$AERC_ACCOUNTS_CONF"
 fi
+
+curl https://raw.githubusercontent.com/dracula/aerc/main/dracula > \
+     "$HOME/.config/aerc/dracula"
