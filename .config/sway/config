@@ -221,4 +221,9 @@ bindsym Shift+Print exec grimshot save area
 bindsym Mod1+Print  exec grimshot save output
 bindsym Ctrl+Print  exec grimshot save window
 
+input type:keyboard {
+    xkb_layout us,fi
+    xkb_options grp:win_space_toggle,compose:caps
+}
+
 include /etc/sway/config.d/*
