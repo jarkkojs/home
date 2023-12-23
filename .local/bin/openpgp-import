@@ -2,6 +2,17 @@
 
 set -e
 
+exit_usage() {
+>&2 cat << EOF
+Usage: $0 <user>
+EOF
+exit 1
+}
+
+if [[ $# -eq 0 ]]; then
+  exit_usage
+fi
+
 USER=$1
 
 gpg --import "$USER-public.pgp"
