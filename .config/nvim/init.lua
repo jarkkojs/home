@@ -44,5 +44,6 @@ end)
 
 require('lspconfig').lua_ls.setup({})
 require('lspconfig').rust_analyzer.setup({})
+require('lspconfig').pylsp.setup({})
 
 vim.cmd[[colorscheme dracula-soft]]
